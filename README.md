@@ -6,3 +6,6 @@
 - Replit e Render
 - Bootstrap
 - PlanetScale
+- HTML
+- CSS
+- Bootstrap
