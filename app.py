@@ -1,14 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return '<h1>Hello, World</h1>'
-
-@app.route('/sobre/<usuario>')
-def sobre(usuario):
-    return f'<h3>Sobre mim: {usuario}</h3>'
-
+    return render_template('home.html')
 
  
