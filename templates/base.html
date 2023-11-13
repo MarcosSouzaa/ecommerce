@@ -21,8 +21,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav me-auto">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Produtos</a>             
+              <a class="nav-link active" aria-current="page" href="{{url_for('page_home')}}">Home</a>
+              <a class="nav-link" href="{{url_for('page_produto')}}">Produtos</a>             
             </div>
             <div class="navbar-nav ms-auto">
               <a class="nav-link" href="#">Login</a>
@@ -33,7 +33,8 @@
       </nav>
 
       {% block conteudo %}
-        
+          <h2 style="text-align: center;">Home Page</h2>
+          <hr>  
       {% endblock %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
