@@ -14,6 +14,11 @@ class Item(db.Model):
     preco = db.Column(db.Integer, nullable=False)
     cod_barra = db.Column(db.String(length=12), nullable=False, unique=True)
     descricao = db.Column(db.String(length=1024), nullable=False, unique=True)
+    
+    # Para melhorar a visualização no retorno dos dados
+    # o self são as informações das colunas
+    def __repr__(self):
+        return f"Item {self.nome}"
 
 @app.route('/')
 def page_home():
