@@ -1,11 +1,4 @@
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mercado.db"
-db.init_app(app)
-
+from mercado import db
 # no nosso mercado temos vários ítens ou produtos
 # esse é o nosso model que vai gerar uma tabela no banco de dados
 class Item(db.Model):
@@ -19,12 +12,3 @@ class Item(db.Model):
     # o self são as informações das colunas
     def __repr__(self):
         return f"Item {self.nome}"
-
-@app.route('/')
-def page_home():
-    return render_template('home.html')
-
-@app.route('/produtos')
-def page_produto():
-    itens = Item.query.all()
-    return render_template('produtos.html', itens = itens)
