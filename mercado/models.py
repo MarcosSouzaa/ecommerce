@@ -1,4 +1,13 @@
 from mercado import db
+
+# Temos um usuário que pode comprar vários produtos
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True, )
+    usuario = db.Column(db.String(length=30), nullable=False, unique=True)
+    email = db.Column(db.String(length=50), nullable=False, unique=True)
+    senha = db.Column(db.String(length=60), nullable=False, unique=True)
+    valor = db.Column(db.Integer, nullable=False, default=5000)  
+
 # no nosso mercado temos vários ítens ou produtos
 # esse é o nosso model que vai gerar uma tabela no banco de dados
 class Item(db.Model):
