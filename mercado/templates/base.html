@@ -31,6 +31,14 @@
           </div>
         </div>
       </nav>
+       <!--Tratando as mensagens de erros-->
+      {% with messages = get_flashed_messages(with_categories=true) %}      
+       {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p> <!--Retorna a mensagem aqui-->
+        {% endfor%}
+       {% endif %}
+       {% endwith %}
 
       {% block conteudo %}
           <h2 style="text-align: center;">Home Page</h2>

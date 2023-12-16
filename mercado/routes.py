@@ -1,5 +1,5 @@
 from mercado import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from mercado.models import Item, User
 from mercado.forms import CadastroForm
 from mercado import db
@@ -16,14 +16,19 @@ def page_produto():
 @app.route('/cadastro', methods=['GET', 'POST'])
 def page_cadastro():
     form = CadastroForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit(): #Se o cadastro for validado vou passar os parâmretros requeridos no model user
         usuario = User(
             usuario = form.usuario.data,
             email = form.email.data,
             senha = form.senha1.data
+            # o valor não vou passar porque o default é 5000
+            # itens também não vou passar porque é pra relacionamento
         )
         db.session.add(usuario)
         db.session.commit()
         return redirect(url_for('page_produto'))
+    if form.errors != {}:
+        for err in form.errors.values():
+            flash(f"Erro ao cadastrar usuário {err}")
 
     return render_template('cadastro.html', form=form)
